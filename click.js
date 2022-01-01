@@ -1,1 +1,1 @@
-document.addEventListener("click",()=>alert('Clicked!'))
+document.addEventListener("click",()=>{alert('Clicked!');console.log("Clicked!")})
