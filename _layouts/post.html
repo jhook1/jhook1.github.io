@@ -2,8 +2,8 @@
 layout: default
 ---
 
-<div class="wrapper">
-    <h1>{{ page.title }}</h1>
+<div class="wrapper post-wrapper">
+    <h1 contenteditable="{% if page.edit_mode %}true{% else %}false{% endif %}">{{ page.title }}</h1>
     <p>{{ page.date | date_to_string }} - {{ page.author }}</p>
 
     {{ content }}
