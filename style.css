@@ -1,11 +1,28 @@
+html, body {
+    height: 100%;
+}
+
 .site-footer {
     padding-top: 25px;
     padding-bottom: 10px;
+    width: 100%;
+    flex-shrink: 0;
 }
 
-.post-list-container{
+.content-wrapper {
+    display: flex;
+    height: 100%;
+}
+
+.post-list-container {
     background-color: lightgray;
-    text-align: center;
+    /* text-align: center;
     margin-top: 25px;
-    padding-block: 10px;
+    padding-block: 10px; */
+    margin-left: 10px;
+    padding-left: 10px;
+}
+
+.bottom-text {
+    align-self: flex-end;
 }
