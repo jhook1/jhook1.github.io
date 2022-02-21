@@ -16,11 +16,13 @@ html, body {
 
 .post-list-container {
     background-color: lightgray;
-    /* text-align: center;
-    margin-top: 25px;
-    padding-block: 10px; */
     margin-left: 10px;
-    padding-left: 10px;
+    padding-inline: 10px;
+}
+
+.post-list-header {
+    padding-bottom: 15px;
+    border-bottom: 2px solid black;
 }
 
 .bottom-text {
