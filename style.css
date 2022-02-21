@@ -33,3 +33,7 @@ html, body {
 .post-wrapper {
     width: 100%;
 }
+
+.content-draft {
+    word-break: break-all;
+}
