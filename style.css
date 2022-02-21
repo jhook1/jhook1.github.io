@@ -15,7 +15,7 @@ html, body {
 }
 
 .post-list-container {
-    background-color: lightgray;
+    background-color: #EEE;
     margin-left: 10px;
     padding-inline: 10px;
 }
@@ -23,6 +23,7 @@ html, body {
 .post-list-header {
     padding-bottom: 15px;
     border-bottom: 2px solid black;
+    padding-top: 10px;
 }
 
 .bottom-text {

@@ -9,4 +9,4 @@ github_username: jhook1
 # Build settings
 theme: minima
 plugins:
-  - jekyll-feed
+#  - jekyll-feed
