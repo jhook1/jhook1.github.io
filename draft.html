@@ -6,6 +6,41 @@ author: John Hook
 edit_mode: true
 ---
 
-<div id="contentdraft" class="content-draft" contenteditable="true">
-    This is a place to draft new posts.
+<script>
+    function formatText(formatTag){
+        const selection = document.getSelection().getRangeAt(0);
+        const preTextNode = selection.startContainer;
+        const el = document.createElement(formatTag);
+        el.append(selection.extractContents());
+        preTextNode.after(el);
+    }
+</script>
+<style type="text/css">
+    .intLink { cursor: pointer; }
+    img.intLink { border: 0; }
+    #toolBar1 select { font-size:10px; }
+    #textBox {
+        width: 540px;
+        height: 200px;
+        border: 1px #000000 solid;
+        padding: 12px;
+        overflow: scroll;
+    }
+    #textBox #sourceText {
+        padding: 0;
+        margin: 0;
+        min-width: 498px;
+        min-height: 200px;
+    }
+    #editMode label { cursor: pointer; }
+</style>
+<div class="edit-container">
+    <!-- span ensures that text not div wrapped allows for formatting-->
+    <div title="toolbar" class="edit-toolbar">
+        <img class="intLink" title="Bold" onclick="formatText('strong');" src="data:image/gif;base64,R0lGODlhFgAWAID/AMDAwAAAACH5BAEAAAAALAAAAAAWABYAQAInhI+pa+H9mJy0LhdgtrxzDG5WGFVk6aXqyk6Y9kXvKKNuLbb6zgMFADs=" />
+        <img class="intLink" title="Italic" onclick="formatText('em');" src="data:image/gif;base64,R0lGODlhFgAWAKEDAAAAAF9vj5WIbf///yH5BAEAAAMALAAAAAAWABYAAAIjnI+py+0Po5x0gXvruEKHrF2BB1YiCWgbMFIYpsbyTNd2UwAAOw==" />
+    </div>
+    <span id="text-edit" class="content-edit" contenteditable="true">
+        This is a place to draft new posts.
+    </span>
 </div>
