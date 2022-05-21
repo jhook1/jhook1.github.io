@@ -11,11 +11,11 @@ const App = (props) => {
     return e(
         React.StrictMode,null,e(
             Container,{className:"react-container"},e(
-                Segment,{className:"react-container",inverted:false,raised:true},
+                Segment,{className:"react-container",inverted:true,raised:true},
                 e(Navbar,{page:"Home"}),
                 e(Divider),e(Content),e(Divider),
                 e(Footer)
-            )            
+            )
         )
     );
 }
