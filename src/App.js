@@ -5,15 +5,15 @@ import Content from "./Content.js";
 import Footer from "./Footer.js";
 
 const e = React.createElement;
-const {Container,Segment,Divider} = semanticUIReact;
+const {Container,Segment} = semanticUIReact;
 
 const App = (props) => {
     return e(
         React.StrictMode,null,e(
             Container,{className:"react-container"},e(
-                Segment,{className:"react-container",inverted:true,raised:true},
+                Segment,{className:"react-container",inverted:false,raised:true},
                 e(Navbar,{page:"Home"}),
-                e(Divider),e(Content),e(Divider),
+                e(Content),
                 e(Footer)
             )
         )

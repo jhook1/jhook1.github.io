@@ -4,6 +4,7 @@ html, body {
 
 .react-container {
     height: 100%;
+    overflow: auto;
     display: flex !important;
     flex-direction: column;
 }
@@ -15,15 +16,9 @@ main {
 .root-header {
     flex-shrink: 0;
     min-height: 5vh;
-    text-align: center;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-}
-
-hr {
-    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 .root-footer {

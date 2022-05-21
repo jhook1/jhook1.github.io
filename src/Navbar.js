@@ -1,6 +1,6 @@
 const e = React.createElement;
 const {useState} = React;
-const {Menu} = semanticUIReact;
+const {Segment,Menu,Divider} = semanticUIReact;
 
 export default function Navbar(props) {
     const [activeItem,setActiveItem] = useState(props.page);
@@ -11,13 +11,15 @@ export default function Navbar(props) {
 
     return e(
         "header",{className:"root-header"},e(
-            Menu,{fluid:true,inverted:true,color:"blue"},e(
-                Menu.Item,{name:"Home",active:activeItem === "Home",onClick:handleItemClick}
-            ),e(
-                Menu.Item,{name:"About",active:activeItem === "About",onClick:handleItemClick}
-            ),e(
-                Menu.Item,{name:"Contact",active:activeItem === "Contact",onClick:handleItemClick}
+            Segment,null,e(
+                Menu,{fluid:true,inverted:true,color:"blue"},e(
+                    Menu.Item,{name:"Home",active:activeItem === "Home",onClick:handleItemClick}
+                ),e(
+                    Menu.Item,{name:"About",active:activeItem === "About",onClick:handleItemClick}
+                ),e(
+                    Menu.Item,{name:"Contact",active:activeItem === "Contact",onClick:handleItemClick}
+                )
             )
-        )
+        ),e(Divider)
     ); 
 }
