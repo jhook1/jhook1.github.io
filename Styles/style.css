@@ -3,9 +3,17 @@ html, body {
 }
 
 body {
+    margin-block: 0px;
+}
+
+#react-container {
+    height: 100%;
+}
+
+.react-container {
+    height: 100%;
     display: flex;
     flex-direction: column;
-    margin-block: 0px;
 }
 
 main {
