@@ -2,17 +2,13 @@ html, body {
     height: 100%;
 }
 
-body {
-    margin-block: 0px;
-}
-
 #react-container {
     height: 100%;
 }
 
 .react-container {
     height: 100%;
-    display: flex;
+    display: flex !important;
     flex-direction: column;
 }
 

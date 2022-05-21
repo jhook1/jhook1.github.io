@@ -1,18 +1,19 @@
 "use strict";
 
-import Header from "./Header.js";
+import Navbar from "./Navbar.js";
 import Content from "./Content.js";
 import Footer from "./Footer.js";
 
 const e = React.createElement;
+const {Container,Divider} = semanticUIReact;
 
-const LayoutSep = e("hr");
+//const LayoutSep = e("hr");
 
 const App = () => {
     return e(
-        "div",{className:"react-container"},
-        e(Header,{title:"Home"}),
-        LayoutSep,e(Content),LayoutSep,
+        Container,{className:"react-container"},
+        e(Navbar,{page:"Home"}),
+        e(Divider),e(Content),e(Divider),
         e(Footer)
     );
 }
