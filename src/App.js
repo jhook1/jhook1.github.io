@@ -5,19 +5,21 @@ import Content from "./Content.js";
 import Footer from "./Footer.js";
 
 const e = React.createElement;
-const {Container,Divider} = semanticUIReact;
+const {Container,Segment,Divider} = semanticUIReact;
 
-//const LayoutSep = e("hr");
-
-const App = () => {
+const App = (props) => {
     return e(
-        Container,{className:"react-container"},
-        e(Navbar,{page:"Home"}),
-        e(Divider),e(Content),e(Divider),
-        e(Footer)
+        React.StrictMode,null,e(
+            Container,{className:"react-container"},e(
+                Segment,{className:"react-container",inverted:false,raised:true},
+                e(Navbar,{page:"Home"}),
+                e(Divider),e(Content),e(Divider),
+                e(Footer)
+            )            
+        )
     );
 }
 
-const domContainer = document.getElementById("react-container");
+const domContainer = document.querySelector(".react-container");
 const root = ReactDOM.createRoot(domContainer);
 root.render(App());

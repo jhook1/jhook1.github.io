@@ -2,10 +2,6 @@ html, body {
     height: 100%;
 }
 
-#react-container {
-    height: 100%;
-}
-
 .react-container {
     height: 100%;
     display: flex !important;
@@ -18,7 +14,7 @@ main {
 
 .root-header {
     flex-shrink: 0;
-    min-height: 10vh;
+    min-height: 5vh;
     text-align: center;
     display: flex;
     flex-direction: row;
