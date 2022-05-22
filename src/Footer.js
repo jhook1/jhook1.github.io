@@ -3,8 +3,8 @@ const {Segment,Divider,Icon} = semanticUIReact;
 
 export default function Footer(props) {
     return e(
-        "footer",{className:"root-footer"},e(Divider),e(
-            Segment,{className:"footer-sectioning"},e(
+        "footer",{className:"root-footer"},e(
+            Segment,{className:"footer-sectioning",inverted:true},e(
                 "span",null,"Hosted on Github Pages",e(
                     Icon,{name:"github",size:"large",className:"icon-spacing"}
                 )

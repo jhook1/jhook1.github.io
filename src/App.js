@@ -12,8 +12,8 @@ const App = (props) => {
         React.StrictMode,null,e(
             Container,{className:"react-container"},e(
                 Segment,{className:"react-container",inverted:false,raised:true},
-                e(Navbar,{page:"Home"}),e(Divider),
-                e(Content),
+                e(Navbar,{page:"Home"}),
+                e(Divider),e(Content),e(Divider),
                 e(Footer)
             )
         )

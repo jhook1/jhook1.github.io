@@ -13,13 +13,13 @@ export default function Navbar(props) {
 
     return e(
         "header",{className:"root-header"},e(
-            Segment,null,e(
+            Segment,{inverted:true},e(
                 Menu,{fluid:true,inverted:true,color:"blue"},navLinks.map((link) => {
                     return e(
                         Menu.Item,{key:link,name:link,active:activeItem === link,onClick:handleItemClick}
                     )
                 })
             )
-        )//,e(Divider)
+        )
     ); 
 }

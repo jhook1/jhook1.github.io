@@ -30,8 +30,6 @@ main {
 .footer-sectioning {
     display: flex;
     flex-direction: row;
-    /* vertical-align: middle;
-    justify-content: center; */
     align-items: center;
 }
 
