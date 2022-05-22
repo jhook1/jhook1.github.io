@@ -40,10 +40,10 @@ export default function MarkdownViewer(props) {
 
     return e(
         Container,null,e(
-            Menu,{fluid:true}
+            Menu,{fluid:false,vertical:true}
             ,fileList.map((fileName) => {
                 return e(
-                    Menu.Item,{key:fileName,content:fileName,onClick:handleItemClick}
+                    Menu.Item,{key:fileName,content:fileName,active:fileName===currFile,onClick:handleItemClick}
                 )
             })
         ),currFile ? e(
