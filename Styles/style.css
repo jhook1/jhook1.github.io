@@ -39,10 +39,9 @@ main {
     margin-bottom: 2px;
 }
 
-.center-break {
-    color: black;
-    border-color: black;
-    width: 2px;
+.icon-spacing {
+    margin-inline: 4px !important;
+    margin-top: -3px !important;
 }
 
 .right-text {

@@ -20,6 +20,6 @@ export default function Navbar(props) {
                     )
                 })
             )
-        ),e(Divider)
+        )//,e(Divider)
     ); 
 }
