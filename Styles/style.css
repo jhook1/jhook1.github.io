@@ -5,7 +5,6 @@ html, body {
 .react-container {
     min-height: 100vh;
     height: fit-content;
-    overflow: auto;
     display: flex !important;
     flex-direction: column;
 }
