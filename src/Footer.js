@@ -4,7 +4,11 @@ const {Segment,Divider,Icon} = semanticUIReact;
 export default function Footer(props) {
     return e(
         "footer",{className:"root-footer"},e(Divider),e(
-            Segment,null,e(
+            Segment,{className:"footer-sectioning"},e(
+                "span",null,"Hosted on Github Pages",e(
+                    Icon,{name:"github",size:"large",className:"icon-spacing"}
+                )
+            ),e(
                 "span",{className:"footer-text"},e(
                     "p",{className:"left-text"},"Source: ",e(
                         "a",{href:"https:github.com/jhook1/jhook1.github.io"},"jhook1.github.io"
@@ -17,6 +21,10 @@ export default function Footer(props) {
                     ),e(
                         Icon,{name:"github",size:"large",className:"icon-spacing"}
                     )
+                )
+            ),e(
+                "span",null,"Built with React",e(
+                    Icon,{name:"react",size:"large",className:"icon-spacing",color:"blue"}
                 )
             )
         )

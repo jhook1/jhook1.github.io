@@ -27,6 +27,18 @@ main {
     text-align: center;
 }
 
+.footer-sectioning {
+    display: flex;
+    flex-direction: row;
+    /* vertical-align: middle;
+    justify-content: center; */
+    align-items: center;
+}
+
+.footer-sectioning > * {
+    flex: 1;
+}
+
 .footer-text {
     display: flex;
     flex-direction: column;
