@@ -1,20 +1,23 @@
+import Viewer from "./Viewer.js";
+
 const e = React.createElement;
-const {Button} = semanticUIReact;
+const {useState} = React;
+const {Button} = semanticUIReact; // Causes findDOMNode warning due to ref issues
 
 export default function Content(props) {
+    const [sampleCt,setSampleCt] = useState(0);
+
     const handleBtnClick = (e) => {
-        let newEl = document.createElement("p");
-        newEl.innerText = "Random Conent";
-        document.getElementById("contentList").append(newEl);
+        setSampleCt(sampleCt + 5);
     }
 
     return e(
         "main",null,e(
             "p",null,"Hello World!"
         ),e(
-            Button,{positive:true,label:"Add Content",onClick:handleBtnClick}
+            Button,{positive:true,onClick:handleBtnClick},"Add Content"
         ),e(
-            "ul",{id:"contentList"}
-        )
+            "ul",null,[...Array(sampleCt)].map((_,i) => {return e("li",{key:i},"Sample Content")})
+        ),e(Viewer)
     );
 }

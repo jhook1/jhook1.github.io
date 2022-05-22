@@ -27,3 +27,16 @@ main {
     min-height: 5vh;
     text-align: center;
 }
+
+.footer-text {
+    width: 50%;
+    margin-inline: auto;
+}
+
+.left-text {
+    float: left;
+}
+
+.right-text {
+    float: right;
+}
