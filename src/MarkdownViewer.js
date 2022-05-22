@@ -7,7 +7,7 @@ export default function MarkdownViewer(props) {
     const writer = new commonmark.HtmlRenderer();
     const parser = new DOMParser();
 
-    const [currFile,setCurrFile] = useState("Test.md");
+    const [currFile,setCurrFile] = useState("");
 
     const [fileList,setFileList] = useState([]);
     const fetchFileList = async () => {
@@ -22,11 +22,15 @@ export default function MarkdownViewer(props) {
     const [viewText,setViewText] = useState("");
     const fetchMarkdownText = async (file) => {
         if(!file) return;
-        const res = await fetch("/Content/" + file);
+        const res = await fetch(file);
         const markdown = await res.text();
         setViewText(markdown);
     }
     useEffect(()=>{fetchMarkdownText(currFile)},[currFile]);
+
+    const handleItemClick = (e,{content}) => {
+        setCurrFile(content);
+    }
 
     const renderMarkupFromString = (str) => {
         const parsed = reader.parse(str);
@@ -36,15 +40,14 @@ export default function MarkdownViewer(props) {
 
     return e(
         Container,null,e(
-            Menu,{fluid:true},e(
-                Menu.Item,{content:"Test"}
-            ),fileList.map((fileName) => {
+            Menu,{fluid:true}
+            ,fileList.map((fileName) => {
                 return e(
-                    Menu.Item,{key:fileName,content:fileName}
+                    Menu.Item,{key:fileName,content:fileName,onClick:handleItemClick}
                 )
             })
-        ),e(
+        ),currFile ? e(
             Segment,{dangerouslySetInnerHTML:renderMarkupFromString(viewText)}
-        )
+        ) : null
     );
 }
