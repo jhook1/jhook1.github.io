@@ -2,7 +2,7 @@ html, body {
     height: 100%;
 }
 
-.react-container {
+.react-content {
     min-height: 100vh;
     height: fit-content;
     display: flex !important;
@@ -43,18 +43,12 @@ main {
     align-items: center;
 }
 
-.left-text {
-    float: left;
-    flex-basis: 100%;
-    margin-bottom: 2px;
+.label-icon-spacing {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
 }
 
-.icon-spacing {
-    margin-inline: 4px !important;
-    margin-top: -3px !important;
-}
-
-.right-text {
-    float: right;
-    flex-basis: 100%;
+.label-icon-spacing > i {
+    margin-left: 5px !important;
 }
