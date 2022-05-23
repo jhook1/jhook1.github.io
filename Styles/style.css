@@ -58,7 +58,3 @@ main {
     float: right;
     flex-basis: 100%;
 }
-
-.menu-stretch {
-    width: fit-content !important;
-}

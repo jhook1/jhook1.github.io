@@ -7,8 +7,6 @@ export default function MarkdownViewer(props) {
     const writer = new commonmark.HtmlRenderer();
     const parser = new DOMParser();
 
-    const [currFile,setCurrFile] = useState("");
-
     const [fileList,setFileList] = useState([]);
     const fetchFileList = async () => {
         if(fileList?.length > 0) return;
@@ -19,6 +17,8 @@ export default function MarkdownViewer(props) {
         setFileList(files);
     }
     useEffect(()=>{fetchFileList()},[]);
+
+    const [currFile,setCurrFile] = useState("");
 
     const [markdown,setMarkdown] = useState("");
     const fetchMarkdownText = async (file) => {
@@ -43,8 +43,8 @@ export default function MarkdownViewer(props) {
         Container,null,e(
             Grid,null,e(
                 Grid.Column,{width:4},e(
-                    Menu,{className:"menu-stretch",fluid:true,vertical:true,tabular:true},e(
-                        Menu.Header,{content:"Posts"}
+                    Menu,{fluid:true,vertical:true,tabular:true},e(
+                        Menu.Item,{content:"Posts",header:true}
                     )
                     ,fileList.map((fileName) => {
                         return e(
