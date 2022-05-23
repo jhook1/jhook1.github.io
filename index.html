@@ -24,21 +24,5 @@
     <body>
         <div class="react-container"></div>
         <script src="/src/App.js" type="module"></script>
-        <!-- <div id="mdRender"></div>
-        <script>
-            const reader = new commonmark.Parser();
-            const writer = new commonmark.HtmlRenderer();
-            
-            (async () => {
-                const response = await fetch("/README.md");
-                const mdTxt = await response.text();
-                console.log(mdTxt);
-
-                var parsed = reader.parse(mdTxt);
-                var output = writer.render(parsed);
-                mdRender.innerHTML = output;
-            })()
-            
-        </script> -->
     </body>
 </html>

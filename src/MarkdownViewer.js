@@ -1,6 +1,6 @@
 const e = React.createElement;
 const {useState,useEffect} = React;
-const {Container,Menu,Segment} = semanticUIReact;
+const {Container,Grid,Menu,Segment} = semanticUIReact;
 
 export default function MarkdownViewer(props) {
     const reader = new commonmark.Parser();
@@ -11,20 +11,21 @@ export default function MarkdownViewer(props) {
 
     const [fileList,setFileList] = useState([]);
     const fetchFileList = async () => {
+        if(fileList?.length > 0) return;
         const res = await fetch("/Content/");
         const txt = await res.text();
         const doc = parser.parseFromString(txt,"text/html");
-        const contents = Array.from(doc.querySelectorAll("td a[href*='.md']")).map(a => a.href);
-        setFileList(contents);
+        const files = Array.from(doc.querySelectorAll("td a[href*='.md']")).map(a => a.innerText);
+        setFileList(files);
     }
     useEffect(()=>{fetchFileList()},[]);
 
-    const [viewText,setViewText] = useState("");
+    const [markdown,setMarkdown] = useState("");
     const fetchMarkdownText = async (file) => {
         if(!file) return;
-        const res = await fetch(file);
-        const markdown = await res.text();
-        setViewText(markdown);
+        const res = await fetch("/Content/" + file);
+        const txt = await res.text();
+        setMarkdown(txt);
     }
     useEffect(()=>{fetchMarkdownText(currFile)},[currFile]);
 
@@ -32,22 +33,30 @@ export default function MarkdownViewer(props) {
         setCurrFile(content);
     }
 
-    const renderMarkupFromString = (str) => {
-        const parsed = reader.parse(str);
+    const renderMarkupFromString = (source) => {
+        const parsed = reader.parse(source);
         const output = writer.render(parsed);
         return {__html: output};
     }
 
     return e(
         Container,null,e(
-            Menu,{fluid:false,vertical:true}
-            ,fileList.map((fileName) => {
-                return e(
-                    Menu.Item,{key:fileName,content:fileName,active:fileName===currFile,onClick:handleItemClick}
+            Grid,null,e(
+                Grid.Column,{width:4},e(
+                    Menu,{className:"menu-stretch",fluid:true,vertical:true,tabular:true},e(
+                        Menu.Header,{content:"Posts"}
+                    )
+                    ,fileList.map((fileName) => {
+                        return e(
+                            Menu.Item,{key:fileName,content:fileName,active:fileName===currFile,onClick:handleItemClick}
+                        )
+                    })
                 )
-            })
-        ),currFile ? e(
-            Segment,{dangerouslySetInnerHTML:renderMarkupFromString(viewText)}
-        ) : null
+            ),e(
+                Grid.Column,{width:12,stretched:true},currFile ? e(
+                    Segment,{dangerouslySetInnerHTML:renderMarkupFromString(markdown)}
+                ) : null
+            )
+        )
     );
 }
