@@ -13,31 +13,6 @@ main {
     flex-direction: column;
 }
 
-.page-header {
-    flex-shrink: 0;
-    min-height: 5vh;
-    position: sticky !important;
-    top: 0;
-    z-index: 100;
-}
-
-.page-footer {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-.page-footer > * {
-    flex: 1;
-}
-
-.label-icon-spacing {
-    display: flex !important;
-    align-items: center;
-    justify-content: center;
-}
-
-.label-icon-spacing > i {
-    margin-left: 5px !important;
-    margin-right: 0px !important;
+.post-side-menu {
+    min-width: fit-content;
 }

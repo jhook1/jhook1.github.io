@@ -40,9 +40,9 @@ export default function MarkdownViewer(props) {
     }
 
     return e(
-        Container,null,e(
+        Segment,null,e(
             Grid,null,e(
-                Grid.Column,{width:4},e(
+                Grid.Column,{width:4,className:"post-side-menu"},e(
                     Menu,{fluid:true,vertical:true,tabular:true},e(
                         Menu.Item,{content:"Posts",header:true}
                     )
@@ -54,7 +54,7 @@ export default function MarkdownViewer(props) {
                 )
             ),e(
                 Grid.Column,{width:12,stretched:true},currFile ? e(
-                    Segment,{dangerouslySetInnerHTML:renderMarkupFromString(markdown)}
+                    Segment,{dangerouslySetInnerHTML:renderMarkupFromString(markdown),inverted:true}
                 ) : null
             )
         )
