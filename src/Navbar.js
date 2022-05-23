@@ -10,7 +10,7 @@ export default function Navbar(props) {
     }
 
     return e(
-        Segment,{inverted:true,as:"header",className:"root-header"},e(
+        Segment,{inverted:true,as:"header",className:"page-header"},e(
             Menu,{fluid:true,inverted:true,color:"blue",as:"nav"}
             ,pageList.map((pageName) => {
                 return e(
