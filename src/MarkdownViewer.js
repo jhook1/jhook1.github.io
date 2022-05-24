@@ -1,6 +1,6 @@
 const e = React.createElement;
 const {useState,useEffect} = React;
-const {Container,Grid,Menu,Segment} = semanticUIReact;
+const {Segment,Grid,Menu} = semanticUIReact;
 
 const dirListEnabled = false;
 
