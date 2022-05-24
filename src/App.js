@@ -10,12 +10,13 @@ const {Container,Segment,Divider} = semanticUIReact;
 
 const App = () => {
     const [currPage,setCurrPage] = useState("Home");
+    const [pageList] = useState(["Home","About","Contact","Posts","Test"]);
 
     return e(
         React.StrictMode,null,e(
             Container,null,e(
                 Segment,{className:"react-content",inverted:false,raised:true}
-                ,e(Navbar,{page:currPage,setPage:setCurrPage})
+                ,e(Navbar,{page:currPage,setPage:setCurrPage,pages:pageList})
                 ,e(Divider),e(Content,{page:currPage,setPage:setCurrPage}),e(Divider)
                 ,e(Footer)
             )

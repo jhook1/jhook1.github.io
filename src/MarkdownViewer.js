@@ -45,7 +45,7 @@ export default function MarkdownViewer(props) {
         Segment,null,e(
             Grid,null,e(
                 Grid.Column,{width:4,className:"post-side-menu"},e(
-                    Menu,{fluid:true,vertical:true,tabular:true},e(
+                    Menu,{fluid:true,vertical:true,tabular:true,pointing:true},e(
                         Menu.Item,{content:"Posts",header:true}
                     )
                     ,fileList.map((fileName) => {
