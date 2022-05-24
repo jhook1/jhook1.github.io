@@ -1,6 +1,6 @@
 const e = React.createElement;
 const {useState,useEffect} = React;
-const {Segment,Grid,Menu,Loader} = semanticUIReact;
+const {Segment,Grid,Menu,Button,Loader,Form,TextArea} = semanticUIReact;
 
 const dirListEnabled = false;
 
@@ -21,6 +21,9 @@ export default function MarkdownViewer(props) {
     dirListEnabled && useEffect(()=>{fetchFileList()},[]);
 
     const [currFile,setCurrFile] = useState("");
+    const handleItemClick = (e,{content}) => {
+        setCurrFile(content);
+    }
 
     const [markdown,setMarkdown] = useState("");
     const fetchMarkdownText = async (file) => {
@@ -31,8 +34,9 @@ export default function MarkdownViewer(props) {
     }
     useEffect(()=>{fetchMarkdownText(currFile)},[currFile]);
 
-    const handleItemClick = (e,{content}) => {
-        setCurrFile(content);
+    const [newDraft,setNewDraft] = useState(false);
+    const handleNewBtnClick = (e) => {
+        setNewDraft(true);
     }
 
     const renderMarkupFromString = (source) => {
@@ -53,6 +57,8 @@ export default function MarkdownViewer(props) {
                             Menu.Item,{key:fileName,content:fileName,active:fileName===currFile,onClick:handleItemClick}
                         )
                     })
+                ),e(
+                    Button,{positive:true,content:"New",icon:"edit",labelPosition:"right",onClick:handleNewBtnClick}
                 )
             ),e(
                 Grid.Column,{width:12,stretched:true},currFile ? e(
@@ -64,6 +70,8 @@ export default function MarkdownViewer(props) {
                     ): null
                 ) : null
             )
-        )
+        ), newDraft ? e(
+            Form,null,e(TextArea)
+        ) : null
     );
 }
