@@ -7,8 +7,8 @@ export default function Navbar(props) {
     const handleWindowResize = () => {
         setMobile(
             window.getComputedStyle(document.querySelector("nav.stackable"))
-            .getPropertyValue("flex-direction") === "vertical"
-        )
+            .getPropertyValue("flex-direction") === "column"
+        );
     }
     useEffect(()=>{
         window.addEventListener("resize",handleWindowResize);
@@ -30,16 +30,10 @@ export default function Navbar(props) {
 
     return e(
         Segment,{inverted:true,as:"header",className:"page-header"},e(
-            Menu,{as:"nav",fluid:true,inverted:true,color:"blue",stackable:true},e(
-                Menu.Item,{header:true,content:mobile ? "mobile" : "desktop"}
-            )
+            Menu,{as:"nav",fluid:true,inverted:true,color:"blue",stackable:true}
             ,mobile ? e(
-                Dropdown,null,e(
-                    Dropdown.Menu,null,props.pages.map((pageName) => {
-                    return e(
-                        mobile ? Dropdown.Item : Menu.Item,{key:pageName,content:pageName,active:pageName===props.page,onClick:handleItemClick}
-                    );
-                })
+                Dropdown,{item:true,text:props.page},e(
+                    Dropdown.Menu,null,props.pages.map(renderItem)
             )) : props.pages.map(renderItem)
         )
     ); 
