@@ -1,6 +1,6 @@
 const e = React.createElement;
 const {useState,useEffect} = React;
-const {Segment,Grid,Menu} = semanticUIReact;
+const {Segment,Grid,Menu,Loader} = semanticUIReact;
 
 const dirListEnabled = false;
 
@@ -56,7 +56,12 @@ export default function MarkdownViewer(props) {
                 )
             ),e(
                 Grid.Column,{width:12,stretched:true},currFile ? e(
-                    Segment,{dangerouslySetInnerHTML:renderMarkupFromString(markdown),inverted:true}
+                    Segment,markdown?.length>0 ? {
+                        dangerouslySetInnerHTML:renderMarkupFromString(markdown),inverted:true
+                    } : null
+                    ,markdown?.length===0 ? e(
+                        Loader,{active:true}
+                    ): null
                 ) : null
             )
         )

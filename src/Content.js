@@ -1,4 +1,4 @@
-import MarkdownViewer from "./MarkdownViewer.js";
+import MarkdownViewer from "/src/MarkdownViewer.js";
 
 const e = React.createElement;
 const {useState} = React;
