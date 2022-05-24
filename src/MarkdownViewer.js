@@ -2,12 +2,14 @@ const e = React.createElement;
 const {useState,useEffect} = React;
 const {Container,Grid,Menu,Segment} = semanticUIReact;
 
+const dirListEnabled = false;
+
 export default function MarkdownViewer(props) {
     const reader = new commonmark.Parser();
     const writer = new commonmark.HtmlRenderer();
     const parser = new DOMParser();
 
-    const [fileList,setFileList] = useState([]);
+    const [fileList,setFileList] = useState(["Test.md","Test2.md","Test3.md"]);
     const fetchFileList = async () => {
         if(fileList?.length > 0) return;
         const res = await fetch("/Content/");
@@ -16,7 +18,7 @@ export default function MarkdownViewer(props) {
         const files = Array.from(doc.querySelectorAll("td a[href*='.md']")).map(a => a.innerText);
         setFileList(files);
     }
-    useEffect(()=>{fetchFileList()},[]);
+    dirListEnabled && useEffect(()=>{fetchFileList()},[]);
 
     const [currFile,setCurrFile] = useState("");
 
