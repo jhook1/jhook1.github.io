@@ -62,7 +62,7 @@ export default function MarkdownViewer(props) {
     return e(
         Segment,null,e(
             Grid,null,e(
-                Grid.Row,{columns:2},!newDraft ? e(
+                Grid.Row,null,!newDraft ? e(
                     Grid.Column,{width:4,className:"post-side-menu"},e(
                         Menu,{fluid:true,vertical:true,tabular:true,pointing:true},e(
                             Menu.Item,{content:"Posts",header:true}
@@ -76,18 +76,18 @@ export default function MarkdownViewer(props) {
                         Button,{positive:true,content:"New",icon:"edit",labelPosition:"right",onClick:handleNewBtnClick}
                     )
                 ) : null,e(
-                    Grid.Column,{width:12,stretched:true},currFile||markdown ? e(
+                    Grid.Column,{width:(newDraft?null:12),stretched:true},e(
                         Segment,markdown ? {
                             dangerouslySetInnerHTML:renderMarkupFromString(markdown),inverted:true
                         } : null
                         ,currFile&&!markdown ? e(
                             Loader,{active:true}
                         ): null
-                    ) : null
+                    )
                 )
-            ),e(Divider),e(
+            ),newDraft ? e(Divider) : null,newDraft ? e(
                 Grid.Row,{columns:1,stretched:true},e(
-                    Grid.Column,null,newDraft ? e(
+                    Grid.Column,null, e(
                         Form,null,e(
                             Form.TextArea,{className:"static-area",onChange:handleMarkupInput}
                         ),e(
@@ -95,9 +95,9 @@ export default function MarkdownViewer(props) {
                         ),e(
                             Button,{negative:true,icon:"trash alternate outline",content:"Discard",floated:"right",onClick:handleDiscardBtnClick}
                         )
-                    ) : null
+                    )
                 )
-            )
+            ) : null
         )
     );
 }
