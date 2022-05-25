@@ -16,3 +16,8 @@ main {
 .post-side-menu {
     min-width: fit-content;
 }
+
+.static-area textarea {
+    resize: none !important;
+    /* height: 200px; */
+}

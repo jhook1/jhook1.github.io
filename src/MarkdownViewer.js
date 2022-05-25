@@ -1,6 +1,6 @@
 const e = React.createElement;
 const {useState,useEffect} = React;
-const {Segment,Grid,Menu,Button,Loader,Form,TextArea} = semanticUIReact;
+const {Segment,Grid,Menu,Button,Loader,Divider,Form,TextArea} = semanticUIReact;
 
 const dirListEnabled = false;
 
@@ -37,6 +37,21 @@ export default function MarkdownViewer(props) {
     const [newDraft,setNewDraft] = useState(false);
     const handleNewBtnClick = (e) => {
         setNewDraft(true);
+        setCurrFile("");
+        setMarkdown("");
+    }
+    const handleDiscardBtnClick = (e) => {
+        setNewDraft(false);
+        setCurrFile("");
+        setMarkdown("");
+    }
+    const handleSaveBtnClick = (e) => {
+        handleDiscardBtnClick(e);
+    }
+
+    const handleMarkupInput = (e,{value}) => {
+        console.log("markup input");
+        setMarkdown(value);
     }
 
     const renderMarkupFromString = (source) => {
@@ -48,30 +63,42 @@ export default function MarkdownViewer(props) {
     return e(
         Segment,null,e(
             Grid,null,e(
-                Grid.Column,{width:4,className:"post-side-menu"},e(
-                    Menu,{fluid:true,vertical:true,tabular:true,pointing:true},e(
-                        Menu.Item,{content:"Posts",header:true}
-                    )
-                    ,fileList.map((fileName) => {
-                        return e(
-                            Menu.Item,{key:fileName,content:fileName,active:fileName===currFile,onClick:handleItemClick}
+                Grid.Row,{columns:2},!newDraft ? e(
+                    Grid.Column,{width:4,className:"post-side-menu"},e(
+                        Menu,{fluid:true,vertical:true,tabular:true,pointing:true},e(
+                            Menu.Item,{content:"Posts",header:true}
                         )
-                    })
-                ),e(
-                    Button,{positive:true,content:"New",icon:"edit",labelPosition:"right",onClick:handleNewBtnClick}
+                        ,fileList.map((fileName) => {
+                            return e(
+                                Menu.Item,{key:fileName,content:fileName,active:fileName===currFile,onClick:handleItemClick}
+                            )
+                        })
+                    ),e(
+                        Button,{positive:true,content:"New",icon:"edit",labelPosition:"right",onClick:handleNewBtnClick}
+                    )
+                ) : null,e(
+                    Grid.Column,{width:12,stretched:true},currFile||markdown ? e(
+                        Segment,markdown ? {
+                            dangerouslySetInnerHTML:renderMarkupFromString(markdown),inverted:true
+                        } : null
+                        ,currFile&&!markdown ? e(
+                            Loader,{active:true}
+                        ): null
+                    ) : null
                 )
-            ),e(
-                Grid.Column,{width:12,stretched:true},currFile ? e(
-                    Segment,markdown?.length>0 ? {
-                        dangerouslySetInnerHTML:renderMarkupFromString(markdown),inverted:true
-                    } : null
-                    ,markdown?.length===0 ? e(
-                        Loader,{active:true}
-                    ): null
-                ) : null
+            ),e(Divider),e(
+                Grid.Row,{columns:1,stretched:true},e(
+                    Grid.Column,null,newDraft ? e(
+                        Form,null,e(
+                            TextArea,{className:"static-area",onChange:handleMarkupInput}
+                        ),e(
+                            Button,{primary:true,icon:"save",content:"Save",onClick:handleSaveBtnClick}
+                        ),e(
+                            Button,{negative:true,icon:"trash alternate outline",content:"Discard",floated:"right",onClick:handleDiscardBtnClick}
+                        )
+                    ) : null
+                )
             )
-        ), newDraft ? e(
-            Form,null,e(TextArea)
-        ) : null
+        )
     );
 }
