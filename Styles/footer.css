@@ -2,10 +2,10 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-}
-
-.page-footer > * {
-    flex: 1;
+    justify-content: center;
+    align-self: center;
+    border-radius: .75em !important;
+    min-width: 75%;
 }
 
 .label-icon-spacing {
@@ -17,4 +17,8 @@
 .label-icon-spacing > i {
     margin-left: 5px !important;
     margin-right: 0px !important;
+}
+
+.footer-link {
+    flex: 1;
 }
