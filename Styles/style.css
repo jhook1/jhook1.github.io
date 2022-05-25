@@ -19,5 +19,9 @@ main {
 
 .static-area textarea {
     resize: none !important;
-    /* height: 200px; */
+}
+
+.inner-container {
+    min-height: 60vh;
+    height: fit-content;
 }

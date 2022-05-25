@@ -60,7 +60,7 @@ export default function MarkdownViewer(props) {
     }
 
     return e(
-        Segment,null,e(
+        Segment,{className:"inner-container"},e(
             Grid,null,e(
                 Grid.Row,null,!newDraft ? e(
                     Grid.Column,{width:4,className:"post-side-menu"},e(
@@ -85,7 +85,8 @@ export default function MarkdownViewer(props) {
                         ): null
                     )
                 )
-            ),newDraft ? e(Divider) : null,newDraft ? e(
+            ),newDraft ? e(Divider) : null
+            ,newDraft ? e(
                 Grid.Row,{columns:1,stretched:true},e(
                     Grid.Column,null, e(
                         Form,null,e(
