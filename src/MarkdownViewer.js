@@ -50,6 +50,7 @@ export default function MarkdownViewer(props) {
     }
 
     const handleMarkupInput = (e,{value}) => {
+        e.target.style.height = e.target.scrollHeight + "px";
         setMarkdown(value);
     }
 

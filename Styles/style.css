@@ -19,6 +19,8 @@ main {
 
 .static-area textarea {
     resize: none !important;
+    min-height: 30vh;
+    overflow: hidden;
 }
 
 .inner-container {
