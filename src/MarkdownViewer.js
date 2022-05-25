@@ -9,7 +9,7 @@ export default function MarkdownViewer(props) {
     const writer = new commonmark.HtmlRenderer();
     const parser = new DOMParser();
 
-    const [fileList,setFileList] = useState(["Test.md","Test2.md","Test3.md"]);
+    const [fileList,setFileList] = useState(["Test.md","Test2.md","Test3.md","draft.md"]);
     const fetchFileList = async () => {
         if(fileList?.length > 0) return;
         const res = await fetch("/Content/");
@@ -46,6 +46,18 @@ export default function MarkdownViewer(props) {
         setMarkdown("");
     }
     const handleSaveBtnClick = (e) => {
+        (function DownloadMarkdown(){
+            let text = markdown.replace(/\n/g, "\r\n"); // To retain line breaks.
+            let blob = new Blob([text],{type: "text/plain"});
+            let anchor = document.createElement("a");
+            anchor.download = "draft.md";
+            anchor.href = window.URL.createObjectURL(blob);
+            anchor.target ="_blank";
+            anchor.style.display = "none";
+            document.body.appendChild(anchor);
+            anchor.click();
+            document.body.removeChild(anchor);
+        })();
         handleDiscardBtnClick(e);
     }
 
