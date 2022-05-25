@@ -50,7 +50,6 @@ export default function MarkdownViewer(props) {
     }
 
     const handleMarkupInput = (e,{value}) => {
-        console.log("markup input");
         setMarkdown(value);
     }
 
@@ -90,7 +89,7 @@ export default function MarkdownViewer(props) {
                 Grid.Row,{columns:1,stretched:true},e(
                     Grid.Column,null,newDraft ? e(
                         Form,null,e(
-                            TextArea,{className:"static-area",onChange:handleMarkupInput}
+                            Form.TextArea,{className:"static-area",onChange:handleMarkupInput}
                         ),e(
                             Button,{primary:true,icon:"save",content:"Save",onClick:handleSaveBtnClick}
                         ),e(
