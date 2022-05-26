@@ -12,9 +12,9 @@ export default function MarkdownDisplay(props) {
 
     return e(
         Segment,props.markdown ? {
-            dangerouslySetInnerHTML:renderMarkupFromString(props.markdown),inverted:true
+            dangerouslySetInnerHTML:renderMarkupFromString(props.markdown),inverted:true,className:"fit-width"
         } : null
-        ,props.currFile && !props.markdown ? e(
+        ,props.file && !props.markdown ? e(
             Loader,{active:true}
         ): null
     )

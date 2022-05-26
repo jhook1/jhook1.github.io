@@ -3,9 +3,7 @@ const {Form,Button} = semanticUIReact;
 
 export default function MarkdownDraft(props) {
     const handleDiscardBtnClick = (e) => {
-        props.setNewDraft(false);
-        props.setCurrFile("");
-        props.setMarkdown("");
+        props.setDraftState(false);
     }
 
     const handleSaveBtnClick = (e) => {

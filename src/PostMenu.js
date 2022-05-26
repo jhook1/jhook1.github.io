@@ -18,7 +18,7 @@ export default function PostMenu(props) {
     dirListEnabled && useEffect(()=>{fetchFileList()},[]);
 
     const handleItemClick = (e,{content}) => {
-        props.setCurrFile(content);
+        props.setFile(content);
     }
 
     return e(
@@ -26,7 +26,7 @@ export default function PostMenu(props) {
             Menu.Item,{content:"Posts",header:true}
         ),fileList.map((fileName) => {
             return e(
-                Menu.Item,{key:fileName,content:fileName,active:fileName===props.currFile,onClick:handleItemClick}
+                Menu.Item,{key:fileName,content:fileName,active:fileName===props.file,onClick:handleItemClick}
             )
         })
     );
