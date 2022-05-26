@@ -89,7 +89,7 @@ export default function MarkdownViewer(props) {
                         Button,{positive:true,content:"New",icon:"edit",labelPosition:"right",onClick:handleNewBtnClick}
                     )
                 ) : null,e(
-                    Grid.Column,{width:(newDraft?null:12),stretched:true},e(
+                    Grid.Column,{className:"flex-one",stretched:true},e(
                         Segment,markdown ? {
                             dangerouslySetInnerHTML:renderMarkupFromString(markdown),inverted:true
                         } : null

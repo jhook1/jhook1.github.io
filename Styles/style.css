@@ -27,3 +27,7 @@ main {
     min-height: 65vh;
     height: fit-content;
 }
+
+.flex-one {
+    flex: 1;
+}
