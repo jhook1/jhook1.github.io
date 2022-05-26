@@ -9,15 +9,15 @@ const {Segment,Grid,Button,Divider} = semanticUIReact;
 export default function PostControl() {
     const [currFile,setCurrFile] = useState("");
 
-    const [markdown,setMarkdown] = useState("");
+    const [currMarkdown,setCurrMarkdown] = useState("");
     const fetchMarkdownText = async (file) => {
         if(!file) {
-            setMarkdown("");
+            setCurrMarkdown("");
             return;
         }
         const res = await fetch("/Content/" + file);
         const txt = await res.text();
-        setMarkdown(txt);
+        setCurrMarkdown(txt);
     }
     useEffect(()=>{fetchMarkdownText(currFile)},[currFile]);
 
@@ -27,7 +27,7 @@ export default function PostControl() {
     }
     useEffect(()=>{
         setCurrFile("");
-        setMarkdown("");
+        setCurrMarkdown("");
     },[currDraftState]);
 
     return e(
@@ -41,13 +41,13 @@ export default function PostControl() {
                     )
                 ) : null,e(
                     Grid.Column,{className:"flex-one scroll-container tight-inline-inner relaxed-inline-outer",stretched:true},e(
-                        MarkdownDisplay,{file:currFile,markdown:markdown,}
+                        MarkdownDisplay,{file:currFile,markdown:currMarkdown,}
                     )
                 )
             ),currDraftState ? e(Divider) : null,currDraftState ? e(
                 Grid.Row,{columns:1,stretched:true},e(
                     Grid.Column,null, e(
-                        MarkdownDraft,{setDraftState:setCurrDraftState,setMarkdown:setMarkdown}
+                        MarkdownDraft,{setDraftState:setCurrDraftState,setMarkdown:setCurrMarkdown}
                     )
                 )
             ) : null
